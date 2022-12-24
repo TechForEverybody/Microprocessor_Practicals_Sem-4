@@ -1,0 +1,27 @@
+.MODEL SMALL
+.STACK 100H
+
+.DATA
+STR1 DB "SHWETA$"
+LEN DB 0
+
+.CODE
+    MOV AX , @DATA
+    MOV DS , AX
+    MOV SI , OFFSET STR1
+    UP:
+    MOV AL , [SI]
+    CMP AL , '$'
+    JZ DN 
+    INC LEN
+    INC SI
+    LOOP UP
+    DN: 
+    MOV DL , LEN
+    ADD DL , 48
+    MOV AH , 2
+    INT 21H
+MOV AH , 4CH
+INT 21H
+
+END

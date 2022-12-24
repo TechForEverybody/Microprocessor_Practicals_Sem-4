@@ -1,0 +1,18 @@
+.model small
+.data
+.code
+    MOV AX,6
+    CALL FACT
+    MOV AH,4CH
+    INT 21H
+
+FACT PROC NEAR
+MOV BX,AX
+DEC BX
+
+BACK: MUL BX
+DEC BX
+JNZ BACK
+RET
+ENDP
+END 
